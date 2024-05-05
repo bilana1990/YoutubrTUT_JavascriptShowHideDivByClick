@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>javascript show hide div on click</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="menu">
-        <a id="showall">All</a>
-        <a class="Single" target="1">One</a>
-        <a class="Single" target="2">Two</a>
-        <a class="Single" target="3">Three</a>
+      <a class="Single" target="1">Eat Menu</a>
+      <a class="Single" target="2">Drin Menu</a>
     </div>
 
     <section class="target_box">
-        <div id="div1" class="target">Content One</div>
-        <div id="div2" class="target">Content Two</div>
-        <div id="div3" class="target">Content Three</div>
+      <div id="div1" class="target">Content One</div>
+      <div id="div2" class="target">Content Two</div>
     </section>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const singleButtons = document.querySelectorAll(".Single");
+        const targetElements = document.querySelectorAll(".target");
 
-    <script type="text/javascript">
-        jQuery(function(){
-            jQuery('#showall').click(function(){
-                jQuery('.target').show();
-            });
-            jQuery('.Single').click(function(){
-                jQuery('.target').hide();
-                jQuery('#div'+$(this).attr('target')).show();
-            });
+        singleButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            targetElements.forEach(
+              (element) => (element.style.display = "none")
+            );
+            document.getElementById(`div${button.target}`).style.display =
+              "block";
+          });
         });
+      });
     </script>
-</body>
+  </body>
 </html>
